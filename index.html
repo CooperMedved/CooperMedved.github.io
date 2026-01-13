@@ -1,341 +1,661 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cooper Medved | Portfolio</title>
-  <meta name="description" content="Portfolio of Cooper Medved — MS EE (VLSI/DFT/FPGA). Projects, experience, and resume." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+        :root {
+            --primary: #0c2340;
+            --secondary: #e87722;
+            --accent: #dd550c;
+            --dark: #0a1929;
+            --darker: #03080f;
+            --light: #f1f5f9;
+            --text: #cbd5e1;
+        }
 
-  <link rel="stylesheet" href="style.css" />
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-animation span {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            opacity: 0.1;
+            animation: float 20s infinite;
+        }
+
+        .bg-animation span:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 10%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .bg-animation span:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            left: 80%;
+            animation-delay: 4s;
+        }
+
+        .bg-animation span:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 80%;
+            left: 10%;
+            animation-delay: 8s;
+        }
+
+        .bg-animation span:nth-child(4) {
+            width: 100px;
+            height: 100px;
+            top: 30%;
+            left: 70%;
+            animation-delay: 12s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            25% {
+                transform: translateY(-50px) translateX(50px);
+            }
+            50% {
+                transform: translateY(-100px) translateX(-50px);
+            }
+            75% {
+                transform: translateY(-50px) translateX(-100px);
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 1rem 5%;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 5%;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.6s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            animation: fadeInLeft 1s ease;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(99, 102, 241, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .about-image {
+            position: relative;
+            animation: fadeInRight 1s ease;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeInUp 1s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .project-content p {
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            padding: 0.3rem 0.8rem;
+            background: rgba(99, 102, 241, 0.2);
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px) rotate(360deg);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            section {
+                padding: 3rem 5%;
+            }
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
-
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-
-  <!-- Top Nav -->
-  <header class="topbar">
-    <div class="container nav">
-      <a class="brand" href="#">
-        <span class="dot"></span>
-        <span>Cooper Medved</span>
-      </a>
-
-      <nav class="links" aria-label="Primary navigation">
-        <a href="#background">Background</a>
-        <a href="#education">Education</a>
-        <a href="#experience">Work</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
-
-      <div class="cta">
-        <a class="btn ghost" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
-        <a class="btn" href="#contact">Let’s talk</a>
-      </div>
+    <div class="bg-animation">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
     </div>
-  </header>
 
-  <main id="main">
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <p class="kicker">MS Electrical Engineering · Auburn · VLSI / DFT / FPGA</p>
-          <h1>
-            I build <span class="accent">hardware-focused</span> systems
-            <br />and verify them end-to-end.
-          </h1>
-          <p class="sub">
-            I’m focused on RTL design, DFT concepts, FPGA bring-up, and silicon validation.
-            This site highlights my best work, what I’ve shipped, and what I’m building next.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn" href="#projects">View projects</a>
-            <a class="btn ghost" href="#background">Read background</a>
-          </div>
-
-          <div class="chips" aria-label="Skills highlights">
-            <span class="chip">SystemVerilog</span>
-            <span class="chip">Verilog</span>
-            <span class="chip">Python</span>
-            <span class="chip">FPGA</span>
-            <span class="chip">DFT</span>
-            <span class="chip">ASIC Flows</span>
-          </div>
-        </div>
-
-        <!-- Hero card -->
-        <aside class="card hero-card" aria-label="Quick stats">
-          <div class="card-row">
-            <p class="label">Current focus</p>
-            <p class="value">DFT + hardware security + FPGA board bring-up</p>
-          </div>
-          <div class="divider"></div>
-          <div class="card-row">
-            <p class="label">Strengths</p>
-            <p class="value">RTL, verification, scripting, systems thinking</p>
-          </div>
-          <div class="divider"></div>
-          <div class="card-row">
-            <p class="label">Looking for</p>
-            <p class="value">DFT / pre-silicon or validation internships & roles</p>
-          </div>
-
-          <div class="mini-grid">
-            <div class="mini">
-              <p class="mini-top">Favorite projects</p>
-              <p class="mini-big">3+</p>
-            </div>
-            <div class="mini">
-              <p class="mini-top">Core tools</p>
-              <p class="mini-big">EDA</p>
-            </div>
-            <div class="mini">
-              <p class="mini-top">Location</p>
-              <p class="mini-big">AL/NC</p>
-            </div>
-            <div class="mini">
-              <p class="mini-top">Contact</p>
-              <p class="mini-big">Open</p>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- Background -->
-    <section id="background" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Background</h2>
-          <p>What I’m about, and what I like building.</p>
-        </div>
-
-        <div class="grid-2">
-          <div class="card">
-            <h3>What I do</h3>
-            <p>
-              I’m an MS EE student focused on digital hardware: RTL design, verification,
-              DFT fundamentals, and FPGA prototyping. I enjoy taking a system from a clean
-              spec → implementation → verification → measurable results.
-            </p>
-            <ul class="bullets">
-              <li>RTL modules (CDC/FIFOs, crypto blocks, interfaces)</li>
-              <li>Testbenches, directed/random testing, Python-based checking</li>
-              <li>Bring-up mindset: debug, iterate, document</li>
+    <nav id="navbar">
+        <div class="container">
+            <div class="logo">YourName</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-          </div>
-
-          <div class="card">
-            <h3>What I’m building next</h3>
-            <p>
-              My current “flagship” direction is pairing FPGA/RTL work with DFT hooks and
-              hardware-security experiments, then validating behavior through automation.
-            </p>
-            <ul class="bullets">
-              <li>DFT-friendly RTL patterns (scan enable, controllability/observability)</li>
-              <li>Measurement-driven validation scripts</li>
-              <li>Clean writeups with diagrams + results</li>
-            </ul>
-          </div>
         </div>
-      </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Hi, I'm Your Name</h1>
+            <div class="subtitle">Full Stack Developer & Designer</div>
+            <p>I create beautiful, functional, and user-friendly digital experiences</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
     </section>
 
-    <!-- Education -->
-    <section id="education" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Education</h2>
-          <p>Relevant programs, coursework, and research direction.</p>
-        </div>
-
-        <div class="timeline">
-          <div class="t-item">
-            <div class="t-dot"></div>
-            <div class="t-content card">
-              <div class="t-top">
-                <h3>Auburn University — M.S. Electrical Engineering</h3>
-                <span class="tag">VLSI · DFT · Hardware Security</span>
-              </div>
-              <p>
-                Focused on digital IC design concepts, test, and security. Building a portfolio
-                of RTL + verification + bring-up projects with strong documentation.
-              </p>
+    <section id="about" class="reveal">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I'm a passionate developer with a love for creating elegant solutions to complex problems. With expertise in modern web technologies, I bring ideas to life through clean code and thoughtful design.</p>
+                <p>When I'm not coding, you can find me exploring new technologies, contributing to open source, or sharing knowledge with the developer community.</p>
+                <div class="skills">
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">CSS/SASS</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">UI/UX Design</span>
+                </div>
             </div>
-          </div>
-
-          <div class="t-item">
-            <div class="t-dot"></div>
-            <div class="t-content card">
-              <div class="t-top">
-                <h3>Mississippi State University — B.S. Computer Engineering</h3>
-                <span class="tag">FPGA · Digital Design</span>
-              </div>
-              <p>
-                Coursework and labs in digital logic, sequential design, FPGA implementation,
-                and embedded systems fundamentals.
-              </p>
+            <div class="about-image">
+                <div class="image-placeholder">👨‍💻</div>
             </div>
-          </div>
         </div>
-      </div>
     </section>
 
-    <!-- Experience -->
-    <section id="experience" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Work Experience</h2>
-          <p>Roles where I shipped real results, debugged hard problems, and learned fast.</p>
-        </div>
-
-        <div class="grid-2">
-          <div class="card">
-            <div class="card-top">
-              <h3>Silicon Validation Engineering Intern</h3>
-              <span class="tag">Rambus · Summer 2026</span>
+    <section id="projects" class="reveal">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">🚀</div>
+                <div class="project-content">
+                    <h3>Project One</h3>
+                    <p>A modern web application built with cutting-edge technologies to solve real-world problems.</p>
+                    <div class="project-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">MongoDB</span>
+                    </div>
+                    <a href="#" class="btn btn-primary">View Project</a>
+                </div>
             </div>
-            <p>
-              Python automation + hands-on lab validation. Focus on test workflows, analysis,
-              and building repeatable tooling.
-            </p>
-            <ul class="bullets">
-              <li>Automation scripts to reduce manual test time</li>
-              <li>Data collection + analysis for debug</li>
-              <li>Clear documentation for repeatability</li>
-            </ul>
-          </div>
 
-          <div class="card">
-            <div class="card-top">
-              <h3>Test Engineer Co-op</h3>
-              <span class="tag">Western Digital</span>
+            <div class="project-card">
+                <div class="project-image">💡</div>
+                <div class="project-content">
+                    <h3>Project Two</h3>
+                    <p>An innovative solution that combines beautiful design with powerful functionality.</p>
+                    <div class="project-tags">
+                        <span class="tag">Vue.js</span>
+                        <span class="tag">Firebase</span>
+                        <span class="tag">Tailwind</span>
+                    </div>
+                    <a href="#" class="btn btn-primary">View Project</a>
+                </div>
             </div>
-            <p>
-              Worked on validation/test processes, building strong habits around instrumentation,
-              failure analysis, and reporting.
-            </p>
-            <ul class="bullets">
-              <li>Structured debugging and root-cause workflows</li>
-              <li>Tooling improvements for test efficiency</li>
-              <li>Cross-team communication and writeups</li>
-            </ul>
-          </div>
+
+            <div class="project-card">
+                <div class="project-image">🎨</div>
+                <div class="project-content">
+                    <h3>Project Three</h3>
+                    <p>A creative project showcasing advanced animation and interactive design patterns.</p>
+                    <div class="project-tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">GSAP</span>
+                        <span class="tag">Three.js</span>
+                    </div>
+                    <a href="#" class="btn btn-primary">View Project</a>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <!-- Projects -->
-    <section id="projects" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Projects</h2>
-          <p>Flagship work — the stuff I’d love to talk about in interviews.</p>
+    <section id="contact" class="reveal">
+        <h2>Get In Touch</h2>
+        <div class="contact-content">
+            <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+            <a href="mailto:your.email@example.com" class="btn btn-primary">Send Me an Email</a>
+            <div class="social-links">
+                <a href="#" class="social-link" title="GitHub">GH</a>
+                <a href="#" class="social-link" title="LinkedIn">LI</a>
+                <a href="#" class="social-link" title="Twitter">TW</a>
+                <a href="#" class="social-link" title="CodePen">CP</a>
+            </div>
         </div>
-
-        <div class="projects">
-          <article class="p-card">
-            <div class="p-top">
-              <h3>Async Dual-Clock FIFO</h3>
-              <span class="tag">CDC · RTL</span>
-            </div>
-            <p>
-              Parameterized FIFO with Gray-coded pointers + synchronizers. Verified with
-              stress tests and edge cases.
-            </p>
-            <div class="p-links">
-              <a class="link" href="#" target="_blank" rel="noopener">Repo</a>
-              <a class="link" href="#" target="_blank" rel="noopener">Writeup</a>
-            </div>
-          </article>
-
-          <article class="p-card">
-            <div class="p-top">
-              <h3>AES-128 RTL Core</h3>
-              <span class="tag">Crypto · Verification</span>
-            </div>
-            <p>
-              AES pipeline with known-answer tests and Python reference checks. Focused on
-              correctness + clean structure.
-            </p>
-            <div class="p-links">
-              <a class="link" href="#" target="_blank" rel="noopener">Repo</a>
-              <a class="link" href="#" target="_blank" rel="noopener">Writeup</a>
-            </div>
-          </article>
-
-          <article class="p-card">
-            <div class="p-top">
-              <h3>Custom Artix-7 FPGA Board</h3>
-              <span class="tag">Bring-up · Hardware</span>
-            </div>
-            <p>
-              Board design focused on configuration interfaces and experimentation. Emphasis
-              on documentation, test points, and debug strategy.
-            </p>
-            <div class="p-links">
-              <a class="link" href="#" target="_blank" rel="noopener">Design files</a>
-              <a class="link" href="#" target="_blank" rel="noopener">Notes</a>
-            </div>
-          </article>
-        </div>
-      </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Contact</h2>
-          <p>Best way to reach me + quick links.</p>
-        </div>
-
-        <div class="grid-2">
-          <div class="card">
-            <h3>Reach out</h3>
-            <p class="muted">Email is best. I usually respond within a day.</p>
-            <div class="contact-row">
-              <span class="tag">Email</span>
-              <a class="link" href="mailto:you@example.com">you@example.com</a>
-            </div>
-            <div class="contact-row">
-              <span class="tag">LinkedIn</span>
-              <a class="link" href="#" target="_blank" rel="noopener">linkedin.com/in/your-handle</a>
-            </div>
-            <div class="contact-row">
-              <span class="tag">GitHub</span>
-              <a class="link" href="#" target="_blank" rel="noopener">github.com/yourusername</a>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3>Download</h3>
-            <p class="muted">A PDF resume plus a web version are both useful.</p>
-            <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download resume</a>
-            <p class="fineprint">
-              Tip: name your file <span class="mono">resume.pdf</span> and put it in the repo root.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div class="container foot">
-        <p>© <span id="year"></span> Cooper Medved</p>
-        <p class="muted">Built on GitHub Pages.</p>
-      </div>
+    <footer>
+        <p>&copy; 2026 Your Name. All rights reserved.</p>
     </footer>
-  </main>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll reveal animation
+        const reveals = document.querySelectorAll('.reveal');
+        
+        function checkReveal() {
+            reveals.forEach(reveal => {
+                const windowHeight = window.innerHeight;
+                const revealTop = reveal.getBoundingClientRect().top;
+                const revealPoint = 150;
+
+                if (revealTop < windowHeight - revealPoint) {
+                    reveal.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkReveal);
+        checkReveal();
+    </script>
 </body>
 </html>
