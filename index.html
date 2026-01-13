@@ -1,20 +1,341 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Cooper Medved | Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cooper Medved | Portfolio</title>
+  <meta name="description" content="Portfolio of Cooper Medved — MS EE (VLSI/DFT/FPGA). Projects, experience, and resume." />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-    <h1>Cooper Medved</h1>
-    <p>MS Electrical Engineering | VLSI • DFT • FPGA </p>
 
-    <h2>Projects</h2>
-    <ul>
-        <li><a href="#">AES-128 Encrption Core </li>
-        <li><a href="#">Async FIFO (Gray Code CDC)</a></li>
-        
-    </ul>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Top Nav -->
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#">
+        <span class="dot"></span>
+        <span>Cooper Medved</span>
+      </a>
+
+      <nav class="links" aria-label="Primary navigation">
+        <a href="#background">Background</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="cta">
+        <a class="btn ghost" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <a class="btn" href="#contact">Let’s talk</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="kicker">MS Electrical Engineering · Auburn · VLSI / DFT / FPGA</p>
+          <h1>
+            I build <span class="accent">hardware-focused</span> systems
+            <br />and verify them end-to-end.
+          </h1>
+          <p class="sub">
+            I’m focused on RTL design, DFT concepts, FPGA bring-up, and silicon validation.
+            This site highlights my best work, what I’ve shipped, and what I’m building next.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn" href="#projects">View projects</a>
+            <a class="btn ghost" href="#background">Read background</a>
+          </div>
+
+          <div class="chips" aria-label="Skills highlights">
+            <span class="chip">SystemVerilog</span>
+            <span class="chip">Verilog</span>
+            <span class="chip">Python</span>
+            <span class="chip">FPGA</span>
+            <span class="chip">DFT</span>
+            <span class="chip">ASIC Flows</span>
+          </div>
+        </div>
+
+        <!-- Hero card -->
+        <aside class="card hero-card" aria-label="Quick stats">
+          <div class="card-row">
+            <p class="label">Current focus</p>
+            <p class="value">DFT + hardware security + FPGA board bring-up</p>
+          </div>
+          <div class="divider"></div>
+          <div class="card-row">
+            <p class="label">Strengths</p>
+            <p class="value">RTL, verification, scripting, systems thinking</p>
+          </div>
+          <div class="divider"></div>
+          <div class="card-row">
+            <p class="label">Looking for</p>
+            <p class="value">DFT / pre-silicon or validation internships & roles</p>
+          </div>
+
+          <div class="mini-grid">
+            <div class="mini">
+              <p class="mini-top">Favorite projects</p>
+              <p class="mini-big">3+</p>
+            </div>
+            <div class="mini">
+              <p class="mini-top">Core tools</p>
+              <p class="mini-big">EDA</p>
+            </div>
+            <div class="mini">
+              <p class="mini-top">Location</p>
+              <p class="mini-big">AL/NC</p>
+            </div>
+            <div class="mini">
+              <p class="mini-top">Contact</p>
+              <p class="mini-big">Open</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Background -->
+    <section id="background" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Background</h2>
+          <p>What I’m about, and what I like building.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>What I do</h3>
+            <p>
+              I’m an MS EE student focused on digital hardware: RTL design, verification,
+              DFT fundamentals, and FPGA prototyping. I enjoy taking a system from a clean
+              spec → implementation → verification → measurable results.
+            </p>
+            <ul class="bullets">
+              <li>RTL modules (CDC/FIFOs, crypto blocks, interfaces)</li>
+              <li>Testbenches, directed/random testing, Python-based checking</li>
+              <li>Bring-up mindset: debug, iterate, document</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>What I’m building next</h3>
+            <p>
+              My current “flagship” direction is pairing FPGA/RTL work with DFT hooks and
+              hardware-security experiments, then validating behavior through automation.
+            </p>
+            <ul class="bullets">
+              <li>DFT-friendly RTL patterns (scan enable, controllability/observability)</li>
+              <li>Measurement-driven validation scripts</li>
+              <li>Clean writeups with diagrams + results</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Education</h2>
+          <p>Relevant programs, coursework, and research direction.</p>
+        </div>
+
+        <div class="timeline">
+          <div class="t-item">
+            <div class="t-dot"></div>
+            <div class="t-content card">
+              <div class="t-top">
+                <h3>Auburn University — M.S. Electrical Engineering</h3>
+                <span class="tag">VLSI · DFT · Hardware Security</span>
+              </div>
+              <p>
+                Focused on digital IC design concepts, test, and security. Building a portfolio
+                of RTL + verification + bring-up projects with strong documentation.
+              </p>
+            </div>
+          </div>
+
+          <div class="t-item">
+            <div class="t-dot"></div>
+            <div class="t-content card">
+              <div class="t-top">
+                <h3>Mississippi State University — B.S. Computer Engineering</h3>
+                <span class="tag">FPGA · Digital Design</span>
+              </div>
+              <p>
+                Coursework and labs in digital logic, sequential design, FPGA implementation,
+                and embedded systems fundamentals.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Work Experience</h2>
+          <p>Roles where I shipped real results, debugged hard problems, and learned fast.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-top">
+              <h3>Silicon Validation Engineering Intern</h3>
+              <span class="tag">Rambus · Summer 2026</span>
+            </div>
+            <p>
+              Python automation + hands-on lab validation. Focus on test workflows, analysis,
+              and building repeatable tooling.
+            </p>
+            <ul class="bullets">
+              <li>Automation scripts to reduce manual test time</li>
+              <li>Data collection + analysis for debug</li>
+              <li>Clear documentation for repeatability</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-top">
+              <h3>Test Engineer Co-op</h3>
+              <span class="tag">Western Digital</span>
+            </div>
+            <p>
+              Worked on validation/test processes, building strong habits around instrumentation,
+              failure analysis, and reporting.
+            </p>
+            <ul class="bullets">
+              <li>Structured debugging and root-cause workflows</li>
+              <li>Tooling improvements for test efficiency</li>
+              <li>Cross-team communication and writeups</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Projects</h2>
+          <p>Flagship work — the stuff I’d love to talk about in interviews.</p>
+        </div>
+
+        <div class="projects">
+          <article class="p-card">
+            <div class="p-top">
+              <h3>Async Dual-Clock FIFO</h3>
+              <span class="tag">CDC · RTL</span>
+            </div>
+            <p>
+              Parameterized FIFO with Gray-coded pointers + synchronizers. Verified with
+              stress tests and edge cases.
+            </p>
+            <div class="p-links">
+              <a class="link" href="#" target="_blank" rel="noopener">Repo</a>
+              <a class="link" href="#" target="_blank" rel="noopener">Writeup</a>
+            </div>
+          </article>
+
+          <article class="p-card">
+            <div class="p-top">
+              <h3>AES-128 RTL Core</h3>
+              <span class="tag">Crypto · Verification</span>
+            </div>
+            <p>
+              AES pipeline with known-answer tests and Python reference checks. Focused on
+              correctness + clean structure.
+            </p>
+            <div class="p-links">
+              <a class="link" href="#" target="_blank" rel="noopener">Repo</a>
+              <a class="link" href="#" target="_blank" rel="noopener">Writeup</a>
+            </div>
+          </article>
+
+          <article class="p-card">
+            <div class="p-top">
+              <h3>Custom Artix-7 FPGA Board</h3>
+              <span class="tag">Bring-up · Hardware</span>
+            </div>
+            <p>
+              Board design focused on configuration interfaces and experimentation. Emphasis
+              on documentation, test points, and debug strategy.
+            </p>
+            <div class="p-links">
+              <a class="link" href="#" target="_blank" rel="noopener">Design files</a>
+              <a class="link" href="#" target="_blank" rel="noopener">Notes</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Contact</h2>
+          <p>Best way to reach me + quick links.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Reach out</h3>
+            <p class="muted">Email is best. I usually respond within a day.</p>
+            <div class="contact-row">
+              <span class="tag">Email</span>
+              <a class="link" href="mailto:you@example.com">you@example.com</a>
+            </div>
+            <div class="contact-row">
+              <span class="tag">LinkedIn</span>
+              <a class="link" href="#" target="_blank" rel="noopener">linkedin.com/in/your-handle</a>
+            </div>
+            <div class="contact-row">
+              <span class="tag">GitHub</span>
+              <a class="link" href="#" target="_blank" rel="noopener">github.com/yourusername</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Download</h3>
+            <p class="muted">A PDF resume plus a web version are both useful.</p>
+            <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download resume</a>
+            <p class="fineprint">
+              Tip: name your file <span class="mono">resume.pdf</span> and put it in the repo root.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container foot">
+        <p>© <span id="year"></span> Cooper Medved</p>
+        <p class="muted">Built on GitHub Pages.</p>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
+</html>
